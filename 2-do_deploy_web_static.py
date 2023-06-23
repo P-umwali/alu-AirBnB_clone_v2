@@ -5,7 +5,7 @@ from os.path import exists
 
 env.hosts = ["72.44.46.167", "54.242.122.135"]
 env.user = "ubuntu"
-env.key = "~/.ssh/id_rsa"
+env.key =  "C:/Users/LENOVO/.ssh/id_rsa"
 
 
 def do_deploy(archive_path):
@@ -17,7 +17,7 @@ def do_deploy(archive_path):
         name = file_name.split(".")[0]
         path_name = "/data/web_static/releases/" + name
         put(archive_path, "/tmp/")
-        run("mkdir -p {}/".format(path_name))
+        run("sudo mkdir -p {}/".format(path_name))
         run('tar -xzf /tmp/{} -C {}/'.format(file_name, path_name))
         run("rm /tmp/{}".format(file_name))
         run("mv {}/web_static/* {}".format(path_name, path_name))
