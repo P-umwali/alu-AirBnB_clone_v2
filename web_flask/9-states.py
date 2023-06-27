@@ -9,14 +9,15 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/cities_by_states')
-def states_list():
+@app.route('/states')
+@app.route('/states/<id>')
+def states_list(id=None):
     """
         Return: HTML page with list of states
     """
-    path = '8-cities_by_states.html'
+    path = '9-states.html'
     states = storage.all(State)
-    return render_template(path, states=states)
+    return render_template(path, states=states, id=id)
 
 
 @app.teardown_appcontext
