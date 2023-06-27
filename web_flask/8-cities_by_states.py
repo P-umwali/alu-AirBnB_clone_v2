@@ -19,7 +19,8 @@ def teardown_appcontext(exception):
 
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
-    """Display a HTML page with a list of all State objects and their linked City objects"""
+    """Display a HTML page with a list of all State 
+    objects and their linked City objects"""
     states = sorted(storage.all(State).values(), key=lambda state: state.name)
     return render_template('8-cities_by_states.html', states=states)
 
